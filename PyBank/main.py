@@ -17,7 +17,7 @@ percent_change.tail()
 
 #adding % change to the table as the third entry
 data["% chg"] = percent_change
-data.types
+data.tail()
 
 #check your data - rounded to the second decimal
 round(data.describe(), 2)
@@ -41,9 +41,13 @@ print ("\n")
 print (round(df.describe(), 2))
 
 
-#find max() in a certain column - this case % chng
-percent_chg_max = data.loc[data['% chg'] == '9.65']
-percent_chg_min = data.loc[data['% chg'] == '-10.70']
+#creating variables max increase of percentage 
+max_percent_increase = data.max()[1]
+percent_chg_max = data.loc[data['% chg'] == max_percent_increase]
+
+#creating variable max decrease of percentage
+max_percent_decrease = data.min()[1]
+percent_chg_min = data.loc[data['% chg'] == max_percent_decrease]
 
 #creating values for requested variables
 total_months = df.count()
@@ -53,6 +57,7 @@ max_increase = df.max()
 #mean_change = data.mean()
 #max_increase = data.max()
 #min_decrease = data.min()
+
 print ("\n")
 print ("Financial Analysis: \n --------------------")
 print (f"Total Months: {total_months[0]}")
